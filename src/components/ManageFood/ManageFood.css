@@ -1,0 +1,21 @@
+
+.heading{
+    background-color: whitesmoke;
+    margin-top: 5px;
+    
+}
+.heading p{
+    width: 15vw;
+    color: rgb(86, 90, 85);
+}
+.item_info {
+    background-color: whitesmoke;
+    margin-top: 5px;
+}
+.item_info p{
+    width: 15vw;
+    color: rgb(41, 29, 53);
+    font-weight: 700;
+   
+    
+}

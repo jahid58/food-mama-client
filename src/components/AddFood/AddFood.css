@@ -1,0 +1,25 @@
+.add_food{
+    height: 60vh;
+    width: 70vw;
+}
+.add_food form{
+    display: flex;
+    flex-wrap: wrap;
+}
+.input{
+    width: 30vw !important;
+    margin: 10px;
+}
+.upload_img{
+    
+  font-family: calibri;
+  width: 150px;
+  padding: 10px;
+  border: 1px dashed #BBB;
+  text-align: center;
+  background-color: rgb(161, 231, 214);
+  cursor: pointer;
+}
+.btn{
+    margin-left: 30px;
+}

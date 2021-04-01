@@ -1,0 +1,13 @@
+.foodInfo{
+    background-color: rgb(238, 241, 241);
+    padding: 20px;
+    width: 80vw;
+    margin:auto;
+}
+.foodInfo h6{
+    color: rgb(132, 138, 130);
+}
+.foodInfo h4{
+    font-size: 1rem;
+    font-weight: 700;
+}
