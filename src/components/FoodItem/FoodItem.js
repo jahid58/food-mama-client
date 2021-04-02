@@ -14,7 +14,7 @@ const FoodItem = (props) => {
         {foodName} - {weight}
       </h4>
       <div className="d-flex mt-3 w-100 d-flex justify-content-around">
-        <h5>price:$ {price}</h5>{" "}
+        <h5>price: ${price}</h5>{" "}
         <Link to={`/checkout/${_id}`}>
           {" "}
           <Button variant="contained" color="primary">

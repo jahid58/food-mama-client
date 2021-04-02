@@ -32,7 +32,7 @@ const Checkout = () => {
       body: JSON.stringify(orderInfo),
     })
       .then((res) => res.json())
-      .then((result) => history.push("/Home"));
+      .then((result) => history.push("/Orders"));
     e.preventDefault();
   };
 

@@ -1,20 +1,22 @@
-.admin_panel{
-    display: flex;
+.admin_panel {
+  display: flex;
+  height: 100%;
 }
-.header{
-    height: 100vh;
-    width: 20vw;
-    background-color: rgb(42, 58, 88);
-    color: rgb(214, 202, 202);
-    padding: 10px;
-    cursor: pointer;
+.header {
+  height: 120vh;
+
+  width: 20vw;
+  background-color: rgb(42, 58, 88);
+  color: rgb(214, 202, 202);
+  padding: 50px 10px;
+  cursor: pointer;
 }
-.body{
-    height: 100vh;
-    width: 80vw;
-    padding: 5%;
+.body {
+  height: 100vh;
+  width: 80vw;
+  padding: 5%;
 }
-.header p{
-    font-size: 900;
-    font-weight: 1.4rem;
+.header p {
+  font-size: 900;
+  font-weight: 1.4rem;
 }
