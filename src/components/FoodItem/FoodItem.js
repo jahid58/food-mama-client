@@ -18,7 +18,7 @@ const FoodItem = (props) => {
         <Link to={`/checkout/${_id}`}>
           {" "}
           <Button variant="contained" color="primary">
-            Buy now
+            Order now
           </Button>{" "}
         </Link>
       </div>

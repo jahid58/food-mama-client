@@ -10,7 +10,7 @@ const Admin = () => {
   
   return (
     <div className='admin_panel'>
-    <div className="header">
+    <div className="task_btns">
      <p onClick={()=>setIsManage(true)}><Dashboard/>  Manage item</p>
       <p onClick={()=>setIsManage(false)}><Add/>   Add item</p>
       <p> <Edit/>   Edit item</p>

@@ -1,24 +1,22 @@
-.add_food{
-    height: 60vh;
-    width: 100vw;
+.add_food {
+  height: 60vh;
+  width: 100vw;
 }
-.add_food form{
-    display: flex;
-    flex-wrap: wrap;
+.add_food form {
+  display: flex;
+  flex-wrap: wrap;
 }
-.input{
-    width: 40vw !important;
-    margin: 10px;
+.input {
+  width: 40vw !important;
+  margin: 10px;
 }
-.upload_img{
-  font-family: calibri;
-  width: 150px;
-  padding: 10px;
-  border: 1px dashed #BBB;
+.upload_img {
+  height: 50px;
+  border: 1px dashed #bbb;
   text-align: center;
-  background-color: rgb(161, 231, 214);
+  background-color: rgb(38, 82, 124);
   cursor: pointer;
 }
-.btn{
-   margin:50px auto;
+.btn {
+  margin: 50px auto;
 }
