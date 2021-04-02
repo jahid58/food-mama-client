@@ -26,12 +26,12 @@ const [user,setUser] = useState({})
           </Route>
         </Switch>
     <Switch>
-          <Route path='/Home'>
+          <Route path='/home'>
             <Home></Home>
           </Route>
         </Switch>
         <Switch>
-          <Route path='/Login'>
+          <Route path='/login'>
             <Login></Login>
           </Route>
         </Switch>
@@ -42,13 +42,13 @@ const [user,setUser] = useState({})
           </PrivateRoute>
         </Switch>
         <Switch>
-          <PrivateRoute path='/Orders'>
+          <PrivateRoute path='/orders'>
             <Orders></Orders>
           </PrivateRoute>
         </Switch>
         
         <Switch>
-          <PrivateRoute path='/Admin'>
+          <PrivateRoute path='/admin'>
             <Admin></Admin>
           </PrivateRoute>
         </Switch>

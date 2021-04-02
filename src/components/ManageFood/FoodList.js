@@ -11,7 +11,7 @@ const FoodList = (props) => {
       method: "DELETE",
     })
       .then((res) => res.json())
-      .then((res) => history.push('/Home'));
+      .then((res) => history.push('/home'));
       
   };
   return (

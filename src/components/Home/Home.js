@@ -19,7 +19,7 @@ const Home = () => {
        
         <div className="home">
         {isLoading && <CircularProgress></CircularProgress>}
-      {!isLoading && foods.map((dt) => <FoodItem foodItem={dt}></FoodItem>)}
+      {!isLoading && foods.map((dt) => <FoodItem key={dt._id} foodItem={dt}></FoodItem>)}
     </div>
    </div>
   );

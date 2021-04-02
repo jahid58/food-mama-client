@@ -22,18 +22,20 @@ const Checkout = () => {
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [id]);
+
   const { foodName, price } = item;
   const handlePlaceOrder = (e) => {
-    const orderInfo = { ...user, orderDate, ...item };
+    const orderInfo = { ...user, orderDate: orderDate, orderFood: item };
 
-    fetch("https://blueberry-custard-77892.herokuapp.com/orderedInfo", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(orderInfo),
-    })
-      .then((res) => res.json())
-      .then((result) => history.push("/Orders"));
-    e.preventDefault();
+    if (item.price) {
+      fetch("http://localhost:5000/orderedInfo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderInfo),
+      })
+        .then((res) => res.json())
+        .then((result) => history.push("/orders"));
+    }
   };
 
   return (

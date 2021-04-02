@@ -7,17 +7,17 @@ import { UserContext } from "../../App";
 const Navbar = () => {
   const [user, setUser] = useContext(UserContext);
   return (
-    <navbar className="nav_bar d-flex">
+    <div className="nav_bar d-flex">
       <img src={logo} className="img img-fluid" alt="" />
       <ul className="d-flex">
         <li>
           <Link to="/home">Home</Link>
         </li>
         <li>
-          <Link to="/Orders">Orders</Link>
+          <Link to="/orders">Orders</Link>
         </li>
         <li>
-          <Link to="/Admin">Admin</Link>
+          <Link to="/admin">Admin</Link>
         </li>
         <li>
           {user.name ? (
@@ -30,7 +30,7 @@ const Navbar = () => {
           )}
         </li>
       </ul>
-    </navbar>
+    </div>
   );
 };
 

@@ -1,10 +1,11 @@
-import { Button } from "@material-ui/core";
+import { Button, CircularProgress } from "@material-ui/core";
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { UserContext } from "../../App";
 import "./Orders.css";
 
 const Orders = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [total, setTotal] = useState(null);
   const [user, setUser] = useContext(UserContext);
   const history = useHistory();
@@ -23,19 +24,26 @@ const Orders = () => {
       .then((res) => res.json())
       .then((result) => {
         const totalPrice = result.reduce((total, item) => {
-          const sum = parseInt(item.price);
+          const sum = parseInt(item.orderFood.price);
           total = total + sum;
+
           return total;
         }, 0);
 
         setTotal(parseInt(totalPrice));
         setOrders(result);
+        setIsLoading(false);
       });
   }, [history, user]);
 
   return (
-    <div>
-      {orders.length && (
+    <div className="text-center">
+      {isLoading && (
+        <div>
+          <CircularProgress></CircularProgress>
+        </div>
+      )}
+      {!isLoading && (
         <div className="order_page g-5 row  bg-light  mx-5">
           <div className="payment col-md-5 col-sm-12 p-5 text-center">
             <h4>Payment methods</h4>
@@ -66,25 +74,33 @@ const Orders = () => {
 
           <div className="order_summary text-center col-md-7 col-sm-12 p-5">
             <h3> Order Summary</h3> <h5>ordered item: {orders.length}</h5>
-
             <div className="order_item">
-             
-              {orders.map((item,i) => {
-                return (
-                  <div className=" d-flex justify-content-between">
-                    <p>{i+1} . {item.foodName}</p> <p>$ {item.price}</p>
-                  </div>
-                );
-              })}
+              {orders &&
+                orders.map((item, i) => {
+                  return (
+                    <div className=" d-flex justify-content-between">
+                      <p>
+                        {i + 1} . {item.orderFood.foodName}
+                      </p>{" "}
+                      <p>$ {item.orderFood.price}</p>
+                    </div>
+                  );
+                })}
               <div className="verdict d-flex justify-content-between">
-                <div><h5>Total </h5><br/>
-                <h5>DisCount</h5><br/><h5>Total Cost</h5>
+                <div>
+                  <h5>Total </h5>
+                  <br />
+                  <h5>DisCount</h5>
+                  <br />
+                  <h5>Total Cost</h5>
                 </div>{" "}
-               <div className="total"> 
-                 <h5>  $ {total}</h5><br/>
-               <h5>$ {Math.round(total*.1)}</h5><br/>
-               <h5>$ {Math.round(total*.9)}</h5>
-               </div>
+                <div className="total">
+                  <h5> $ {total}</h5>
+                  <br />
+                  <h5>$ {Math.round(total * 0.1)}</h5>
+                  <br />
+                  <h5>$ {Math.round(total * 0.9)}</h5>
+                </div>
               </div>
             </div>
           </div>

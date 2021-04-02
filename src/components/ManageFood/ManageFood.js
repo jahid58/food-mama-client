@@ -19,7 +19,7 @@ const ManageFood = () => {
         </div>
           {
           foods.length &&
-          foods.map(fd=><FoodList food={fd}></FoodList>)
+          foods.map(fd=><FoodList key={fd._id}food={fd}></FoodList>)
           }
       </div>
 
