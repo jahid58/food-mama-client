@@ -11,9 +11,9 @@ const Admin = () => {
   return (
     <div className='admin_panel'>
     <div className="header">
-     <p onClick={()=>setIsManage(true)}><Dashboard/>  Manage Food item</p>
-      <p onClick={()=>setIsManage(false)}><Add/>   Add food item</p>
-      <p> <Edit/>   Edit food item</p>
+     <p onClick={()=>setIsManage(true)}><Dashboard/>  Manage item</p>
+      <p onClick={()=>setIsManage(false)}><Add/>   Add item</p>
+      <p> <Edit/>   Edit item</p>
     </div>
     <div className="body">
    <div className="addition">
