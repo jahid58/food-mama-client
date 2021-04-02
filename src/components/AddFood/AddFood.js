@@ -20,7 +20,8 @@ const AddFood = () => {
          weight:data.weight,
          image:imgUrl
      }
-    fetch('https://blueberry-custard-77892.herokuapp.com/addFood',
+   
+      fetch('https://blueberry-custard-77892.herokuapp.com/addFood',
     {
         method:'POST',
             headers:{
@@ -30,6 +31,8 @@ const AddFood = () => {
     })
     .then(res=>console.log(res))
     reset({})
+    
+  
   };
 
 
@@ -45,7 +48,7 @@ const AddFood = () => {
      
       <input name="price" type='number' className='form-control input'  placeholder='price' ref={register({ required: true })} /><br></br>
    
-      <input name="image" type='file' className='upload_img'  onBlur={handleImgUpload} ref={register({ required: true })} />
+      <input name="image" type='file' className='upload_img'  onChange={handleImgUpload} ref={register({ required: true })} />
       <input type="submit" value=' Save item' className='btn btn-success'/>
       
     </form>
