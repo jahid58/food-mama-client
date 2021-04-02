@@ -1,35 +1,35 @@
-.order_page{
-    margin: 30px;
-    width: 100vw;
-    background-color: lightgray;
+.cart {
+  margin: 20px;
+}
+.payment {
+  min-height: 90vh;
+}
+.payment h4 {
+  font-weight: 700;
+}
+.order_summary {
+  min-height: 90vh;
+  border-radius: 10px;
 }
 
-.order_summary{
-width: 40vw;
-padding: 30px;
-margin-left: auto;
-background-color: rgb(234, 239, 243);
-border-radius: 10px;
+.methods img {
+  width: 120px;
+  cursor: pointer;
+  margin: 20px;
+}
+.order_summary h3,
+h5 {
+  color: rgb(145, 37, 37);
+  font-weight: 800;
+}
+.verdict h5 {
+  color: rgb(9, 68, 19);
+  font-size: 1rem;
+  font-weight: 800;
+}
 
-
-}
-.order_summary h3 {
-    color: rgb(145, 37, 37);
-    font-size: 1.5rem;
-    font-weight: 800; 
-}
-.verdict h5{
-    color: rgb(61, 5, 10);
-    font-size: 1rem;
-    font-weight: 800; 
-}
-.order_summary h6{
-    color: rgb(127, 125, 138);
-    font-size: 1rem;
-    font-weight: 600;
-}
-.order_summary p{
-    color: rgb(26, 2, 22);
-    font-size: 1rem;
-    font-weight: 600;
+.order_summary p {
+  color: rgb(26, 9, 41);
+  font-size: 1rem;
+  font-weight: 600;
 }

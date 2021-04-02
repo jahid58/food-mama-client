@@ -1,86 +1,87 @@
-import React, { useContext, useState } from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import { googleSignIn, useStyles } from './SignUpStyles';
-import { UserContext } from '../../App';
+import React, { useContext, useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import { googleSignIn, useStyles } from "./SignUpStyles";
+import { UserContext } from "../../App";
 import firebase from "firebase/app";
 import "firebase/auth";
-import { useHistory, useLocation } from 'react-router';
-import { firebaseConfig } from './firebaseConfig';
+import { useHistory, useLocation } from "react-router";
+import { firebaseConfig } from "./firebaseConfig";
+import googleIcon from "../../images/google icon.png";
 
-if(!firebase.apps.length){
-  firebase.initializeApp(firebaseConfig)
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
 }
- const SignUp=(props)=> {
+const SignUp = (props) => {
   const history = useHistory();
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/" } };
-   const [newUser,setNewUser] = useState({
-     name:'',
-     email:'',
-     Password:'',
-     error:'',
-     isValid:true
-   })
-   const [user,setUser] = useContext(UserContext)
-   const getResponse=(res)=>{
-     setUser(res);
-     setNewUser(res);
-  if (!user.error){
-    history.replace(from)
-  }
-   }
+  const [newUser, setNewUser] = useState({
+    name: "",
+    email: "",
+    Password: "",
+    error: "",
+    isValid: true,
+  });
+  const [user, setUser] = useContext(UserContext);
+  const getResponse = (res) => {
+    setUser(res);
+    setNewUser(res);
+    if (!user.error) {
+      history.replace(from);
+    }
+  };
   const classes = useStyles();
 
-  const handleGoogleSignIn=()=>{
-    googleSignIn()
-    .then(res=>{
+  const handleGoogleSignIn = () => {
+    googleSignIn().then((res) => {
       const userInfo = {
-        name:res.displayName,
-        email :res.email,
-        error:res.errorMessage
-      }
-     getResponse(userInfo)
-  
+        name: res.displayName,
+        email: res.email,
+        error: res.errorMessage,
+      };
+      getResponse(userInfo);
+    });
+  };
+
+  const handleInput = (e) => {
+    const userInfo = { ...newUser };
+    if (e.target.name === "email") {
+      userInfo.isValid = /(.+)@(.+){2,}\.(.+){2,}/.test(e.target.value)
+        ? true
+        : false;
     }
-      )
-  }
+    userInfo[e.target.name] = e.target.value;
+    setNewUser(userInfo);
+  };
+  const handleSignUp = (e) => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(newUser.email, newUser.password)
+      .then((userCredential) => {
+        const res = userCredential.user;
+        const userInfo = {
+          name: user.name,
+          email: res.email,
+        };
+        getResponse(userInfo);
+      })
+      .catch((res) => {
+        const userInfo = { ...newUser };
+        userInfo.error = res.message;
+        setNewUser(userInfo);
+      });
 
-  const handleInput=(e)=>{
-    const userInfo = {...newUser}
-  if(e.target.name ==='email'){
-      userInfo.isValid = /(.+)@(.+){2,}\.(.+){2,}/.test(e.target.value) ? true : false;
-  }
-  userInfo[e.target.name ] = e.target.value
-  setNewUser(userInfo)
-  }
-  const handleSignUp=(e)=>{
-    firebase.auth().createUserWithEmailAndPassword(newUser.email,newUser.password)
-    .then((userCredential) => {
-      const res = userCredential.user;
-      const userInfo = {
-        name:user.name,
-        email :res.email,
-      }
-     getResponse(userInfo)
-    
-    })
-    .catch(res=>{
-      const userInfo = {  ...newUser  }
-      userInfo.error = res.message
-        setNewUser(userInfo)
-    })
-
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -92,9 +93,9 @@ if(!firebase.apps.length){
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form}  onSubmit={handleSignUp}>
+        <form className={(classes.form, "text-center")} onSubmit={handleSignUp}>
           <Grid container spacing={2}>
-            <Grid item xs={12} >
+            <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
                 name="name"
@@ -107,7 +108,7 @@ if(!firebase.apps.length){
                 onBlur={handleInput}
               />
             </Grid>
-           
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -144,20 +145,22 @@ if(!firebase.apps.length){
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            color="secondary"
             className={classes.submit}
           >
             Sign Up
           </Button>
           <Button
-              color='primary' 
-          onClick={handleGoogleSignIn}
-          >Sign In with Google</Button>
-        
+            variant="contained"
+            color="primary"
+            onClick={handleGoogleSignIn}
+          >
+            <img src={googleIcon} style={{ height: "15px", margin: "5px" }} />{" "}
+            Sign In with Google
+          </Button>
         </form>
       </div>
-    
     </Container>
   );
-}
-export default SignUp
+};
+export default SignUp;

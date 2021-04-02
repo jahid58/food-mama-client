@@ -20,6 +20,11 @@ const [user,setUser] = useState({})
   <Route> 
      <Navbar></Navbar>
      </Route>
+     <Switch>
+          <Route exact path='/'>
+            <Home></Home>
+          </Route>
+        </Switch>
     <Switch>
           <Route path='/Home'>
             <Home></Home>
